@@ -49,6 +49,79 @@ Python scripts to process, visualize, and model accelerometer and gyroscope data
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
+## Dataset
+
+The dataset was collected using a Meta Motion sensor placed in a wristband worn by various individuals during the performance of five types of exercises: bench press, deadlift, overhead press, rowing, and squats. The sets were divided into medium (10 repetitions) and heavy (5 repetitions). All series data were recorded on a Bluetooth-connected phone and exported in .csv format.
+
+ 
+
+## Processing Raw Data
+
+All .csv files were readed, creating two separate DataFrames: one with accelerometer data and the other with gyroscope data. Next, both DataFrames were merged into one and a frequency conversion was performed:
+
+ 
+
+## Data Visualization
+
+Various types of visualizations have been created to better understand the accelerometer and gyroscope data.
+
+1.Compare medium vs. heavy sets
+
+2.Compare participants
+
+3.Compare exercises
+
+ 
+
+## Detecting Outliers in Sensor Data
+
+Checking whether there are any outliers (extreme values) in our data that we want to remove using various methods(IQR, Chauvenet’s Criterion, Local Outlier Factor (LOF))
+
+The Chauvenet’s Criterion method was chosen, and the outliers detected using this method were replaced with NaN:
+
+ 
+
+## Feature Engineering
+
+Applying interpolation to fill rows with NaN values. Filter subtle noise (not outliers) and identify parts of the data that explain most of the variance. Then add numerical, temporal, frequency, and cluster features.
+
+1. Butterworth lowpass filter
+
+2. Principal component analysis (PCA)
+
+3. Sum of squares attributes
+
+4. Discrete Fourier Transformation (DFT)
+
+5. K-means Clustering
+
+ 
+
+## Predictive Modelling
+
+Experiment with feature selection, model selection and hyperparameter tuning with grid search to find the combination that results in the highest classification accuracy.
+
+1. Generated separate sets for training and testing.
+
+2. Divided the features into subsets.
+
+3. Conducted forward feature selection employing a simple decision tree.
+
+4. Executed a grid search to identify optimal hyperparameters and select the model.
+
+5. Illustrated a grouped bar plot to compare the outcomes.
+
+6. Identified the superior model and assessed its performance.
+
+7. Segregated training and testing data based on individual participants.
+
+8. Employed the best model again and assessed its performance.
+
+ 
+
+## Counting Repetitions
+
+Visualizing the data to spot patterns, configuring the LowPassFilter, applying and fine-tuning the LowPassFilter settings, developing a function to count repetitions, establishing a benchmark dataframe
 
 
 
