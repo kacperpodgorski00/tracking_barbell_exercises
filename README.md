@@ -1,3 +1,5 @@
+![barbell](https://github.com/kacperpodgorski00/tracking_barbell_exercises/assets/73601611/a22db238-528c-4cc2-8cb2-2295f1e0d992)
+
 # Fitness Tracker
 
 Python scripts to process, visualize, and model accelerometer and gyroscope data to create a machine learning model that can classify barbell exercises and count repetitions. The project was created based on a course featured on YouTube by Dave Ebbelaar.
@@ -54,11 +56,11 @@ Python scripts to process, visualize, and model accelerometer and gyroscope data
 The dataset was collected using a Meta Motion sensor placed in a wristband worn by various individuals during the performance of five types of exercises: bench press, deadlift, overhead press, rowing, and squats. The sets were divided into medium (10 repetitions) and heavy (5 repetitions). All series data were recorded on a Bluetooth-connected phone and exported in .csv format.
 
  
-
 ## Processing Raw Data
 
 All .csv files were readed, creating two separate DataFrames: one with accelerometer data and the other with gyroscope data. Next, both DataFrames were merged into one and a frequency conversion was performed:
 
+![dataset](https://github.com/kacperpodgorski00/tracking_barbell_exercises/assets/73601611/141f281e-57d4-463f-b9da-8d0ccf81f5df)
  
 
 ## Data Visualization
@@ -79,13 +81,16 @@ Checking whether there are any outliers (extreme values) in our data that we wan
 
 The Chauvenet’s Criterion method was chosen, and the outliers detected using this method were replaced with NaN:
 
- 
+![output2](https://github.com/kacperpodgorski00/tracking_barbell_exercises/assets/73601611/d3d00980-0b3f-4de1-8f7e-6292e31f67bd)
+
 
 ## Feature Engineering
 
 Applying interpolation to fill rows with NaN values. Filter subtle noise (not outliers) and identify parts of the data that explain most of the variance. Then add numerical, temporal, frequency, and cluster features.
 
 1. Butterworth lowpass filter
+
+![output3](https://github.com/kacperpodgorski00/tracking_barbell_exercises/assets/73601611/31e731f6-1cff-4d7c-afd5-aff12886a827)
 
 2. Principal component analysis (PCA)
 
@@ -94,6 +99,8 @@ Applying interpolation to fill rows with NaN values. Filter subtle noise (not ou
 4. Discrete Fourier Transformation (DFT)
 
 5. K-means Clustering
+
+![output4](https://github.com/kacperpodgorski00/tracking_barbell_exercises/assets/73601611/a09926b5-e112-4942-a2a5-2ce2f56151f2)
 
  
 
@@ -117,11 +124,11 @@ Experiment with feature selection, model selection and hyperparameter tuning wit
 
 8. Employed the best model again and assessed its performance.
 
- 
+![output5](https://github.com/kacperpodgorski00/tracking_barbell_exercises/assets/73601611/c988cfdb-0525-4684-a638-08cf7bf6e348) 
 
 ## Counting Repetitions
 
 Visualizing the data to spot patterns, configuring the LowPassFilter, applying and fine-tuning the LowPassFilter settings, developing a function to count repetitions, establishing a benchmark dataframe
 
-
+![output](https://github.com/kacperpodgorski00/tracking_barbell_exercises/assets/73601611/3bc121ae-0f88-4f9c-905f-1f3476f13b4e)
 
